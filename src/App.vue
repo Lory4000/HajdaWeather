@@ -219,7 +219,7 @@ iframe {
   background-position: bottom;
 }
 
-.Fog {
+.Fog, .Smoke {
   background: linear-gradient(to bottom, rgba(0,0,0,0.25),rgba(0,0,0,0.75)),url("./assets/smoke.jpg");
   transition: 0.8s;
   background-size: cover;
