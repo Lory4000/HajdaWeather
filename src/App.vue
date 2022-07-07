@@ -74,7 +74,7 @@
             <div class="weather">{{ weather.weather[0].main }}</div>
           </div>
         </div>
-        <iframe id="map" :src="'https://maps.google.com/maps?q='+ request + '&output=embed'" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map" :src="'https://maps.google.com/maps?q='+ weather.name + '+' + weather.sys.country + '&output=embed'" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
   </main>  
   </div>
