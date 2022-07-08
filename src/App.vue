@@ -13,14 +13,12 @@
     },
 
     methods: {
-      fetchWeather(e) {
-        if(e.key == "Enter") {
+      fetchWeather() {
           this.request = this.query;
           fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
           .then(res => {
             return res.json()
           }).then(this.setResults);
-        }
       },
 
       setResults(results) {
@@ -60,7 +58,8 @@
       <div class="search-box">
         <input type="text" class="search-bar" 
         placeholder="Search..." v-model="query"
-        @keypress="fetchWeather">
+        v-on:keyup.enter="fetchWeather">
+        <i class="fas fa-search" @click="fetchWeather"></i>
       </div>
       <section class="content" v-if="typeof weather.main != 'undefined'">
         <div class="weather-wrap">
@@ -74,7 +73,7 @@
             <div class="weather">{{ weather.weather[0].main }}</div>
           </div>
         </div>
-        <iframe id="map" :src="'https://maps.google.com/maps?q='+ request + '&output=embed'" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map" :src="'https://maps.google.com/maps?q='+ weather.name + '+' + weather.sys.country + '&output=embed'" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
   </main>  
   </div>
@@ -121,6 +120,7 @@ iframe {
 .search-box {
   min-width: 650px;
   margin-top: 15px;
+  display: flex;
 }
 
 @media(max-width: 700px) {
@@ -142,9 +142,18 @@ iframe {
   margin-top: 40px;
 }
 
+.fa-search {
+  position: relative;
+  right: 50px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #313131;
+}
+
 .search-box .search-bar {
   display: block;
-  width: 100%;
+  min-width: 100%;
   padding: 15px;
   color: #313131;
   font-size: 20px;
@@ -219,7 +228,7 @@ iframe {
   background-position: bottom;
 }
 
-.Fog {
+.Fog, .Smoke {
   background: linear-gradient(to bottom, rgba(0,0,0,0.25),rgba(0,0,0,0.75)),url("./assets/smoke.jpg");
   transition: 0.8s;
   background-size: cover;
