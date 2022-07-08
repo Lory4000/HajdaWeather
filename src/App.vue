@@ -144,7 +144,7 @@ iframe {
 
 .fa-search {
   position: relative;
-  right: 50px;
+  right: 30px;
   top: 20px;
   font-size: 20px;
   cursor: pointer;
