@@ -153,7 +153,7 @@ iframe {
 
 .search-box .search-bar {
   display: block;
-  min-width: 100%;
+  width: 100%;
   padding: 15px;
   color: #313131;
   font-size: 20px;
