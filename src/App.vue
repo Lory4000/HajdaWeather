@@ -118,14 +118,19 @@ iframe {
 }
 
 .search-box {
-  min-width: 650px;
+  position: relative;
+  width: 650px;
   margin-top: 15px;
   display: flex;
 }
 
 @media(max-width: 700px) {
   .search-box {
-    min-width: 100%;
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
   }
 
   iframe {
@@ -143,8 +148,8 @@ iframe {
 }
 
 .fa-search {
-  position: relative;
-  right: 30px;
+  position: absolute;
+  right: 20px;
   top: 20px;
   font-size: 20px;
   cursor: pointer;
@@ -152,8 +157,8 @@ iframe {
 }
 
 .search-box .search-bar {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: inherit;
   padding: 15px;
   color: #313131;
   font-size: 20px;
